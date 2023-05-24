@@ -1,18 +1,16 @@
-import {Routes, Route} from "react-router-dom";
 import Home from "containers/Home";
 import About from "containers/About";
 import Login from "containers/Login";
 import NotFoundPage from "containers/404Page";
+import { useRoutes } from "react-router-dom";
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+  let element = useRoutes([
+    { path: "/", element: <Home />,},
+    { path: "about", element: <About /> },
+    { path: "login", element: <Login /> },
+    { path: "*", element: <NotFoundPage /> },
+  ]);
 
-  )
+  return element;
 }
-
 export default App;
