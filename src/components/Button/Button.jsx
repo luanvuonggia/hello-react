@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import greenArrow from "assets/green-arrow.svg";
 import redArrow from "assets/red-arrow.svg";
 const StyledButton = styled.button`
-  width: ${props => `${props.width}px`};
-  height: ${props => `${props.height}px`};
+  width: ${props => props.width};
+  height: ${props => props.height};
   border: ${props => props.boderColor ? `1px solid ${props.boderColor}` : "none"};
   border-radius: ${props => props.borderRadius};
   background: ${props => props.bgColor};
@@ -35,8 +35,8 @@ export const Button = ({ width, height, textColor, bgColor, boderColor, percent,
  Button.defaultProps = {
   bgColor: '#FFFFFF',
   textColor: '#5429FF',
-  width: 128,
-  height: 46,
+  width: "128px",
+  height: "46px",
   borderRadius: '40px',
   fontSize: 16,
 };

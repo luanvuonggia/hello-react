@@ -46,6 +46,6 @@ export const Card = ({title, amount, content, percent}) => {
     <span>{content}</span> %
   </div>
     }
-    <Button percent={percent} boderColor="#E9E9E9">{percent}%</Button>
+    <Button width="100%" height="46px" borderRadius="12px" percent={percent} boderColor="#E9E9E9">{percent}%</Button>
   </StyledCard>
 }
