@@ -24,6 +24,14 @@ const StyledSideBar = styled.div`
     color: #7A797D;
 
   }
+  .sidebar-menu {
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #27262E;
+  }
 `;
 const StyledNavItem = styled.div`
   display: flex;
@@ -62,6 +70,13 @@ export const SideBar = () => {
           <NavItem text="Home" path="/"></NavItem>
           <NavItem text="About" path="/about"></NavItem>
           <NavItem text="Login" path="/login"></NavItem>
+          <div className="sidebar-menu">PROFILE</div>
+          <NavItem text="Home" path="/"></NavItem>
+          <NavItem text="About" path="/about"></NavItem>
+          <NavItem text="Login" path="/login"></NavItem>
+          <NavItem text="Home" path="/"></NavItem>
+          <div className="sidebar-menu">Other</div>
+          <NavItem text="Light Mode"></NavItem>
         </div>
     </StyledSideBar>
   );

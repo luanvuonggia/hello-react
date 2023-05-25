@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Card from "components/Card";
 import { PrimaryLayout } from "components/Layout";
+import { useSearchParams } from "react-router-dom";
 const AppWrapper = styled.div`
   text-align: center;
   .button-content {
@@ -21,6 +22,8 @@ const AppWrapper = styled.div`
   }
 `;
 const Home = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  console.log('searchParams id', searchParams.get('id'));
   return (
     <PrimaryLayout>
       <AppWrapper>

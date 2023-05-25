@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {SideBar} from "components/SideBar"
 
 const LayoutStyled = styled.div`
-  background-color: #1c233d;
+  background-color: #CAEAE6;
   min-height: 100vh;
   .right {
     float: right;
@@ -11,8 +11,7 @@ const LayoutStyled = styled.div`
   }
 `;
 const ContentStyled = styled.div`
-  background-color: #f23412;
-  margin-top: 64px;
+  margin-top: 130px;
   height: 100vh;
 `;
 const SideBarStyled = styled.div`
