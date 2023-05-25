@@ -15,12 +15,33 @@ const AppWrapper = styled.div`
     color: #27262e;
   }
   .card-wrapper {
-    width: 350px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
   }
 `;
+const fakeData = [
+  {
+    title: "Revenue",
+    amount: 5.00,
+    percent: 12.3,
+  },
+  {
+    title: "Spending",
+    amount: 2.00,
+    percent: 12.3,
+  },
+  {
+    title: "ROI",
+    amount: 14.2,
+    percent: 12.3,
+  },
+  {
+    title: "Estimated",
+    amount: 7.00,
+    percent: 3.2,
+  }
+]
 const Home = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   console.log('searchParams id', searchParams.get('id'));
@@ -29,10 +50,13 @@ const Home = () => {
       <AppWrapper>
         <header className="App-header">
           <div className="card-wrapper">
-            <Card title={"Revenue"} amount="5.00" percent={12.3}></Card>
+            {
+              fakeData.map((item) => <Card title={item.title} amount={item.amount} percent={item.percent}></Card>)
+            }
+            {/* <Card title={"Revenue"} amount="5.00" percent={12.3}></Card>
             <Card title={"Revenue"} amount="5.00" percent={12.3}></Card>
             <Card title={"Revenue"} amount="4.02" percent={12.3}></Card>
-            <Card title={"Revenue"} amount="5.00" percent={12.3}></Card>
+            <Card title={"Revenue"} amount="5.00" percent={12.3}></Card> */}
           </div>
         </header>
       </AppWrapper>

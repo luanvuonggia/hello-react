@@ -7,6 +7,8 @@ const StyledCard = styled.div`
   border-radius: 20px;
   font-size: 12px;
   line-height: 16px;
+  width: 164px;
+  height: 167px;
 
   /* Text/color2 */
 
