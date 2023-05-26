@@ -21,7 +21,7 @@ const StyledLogo = styled.div`
 
 export const Logo = ({className}) => {
   return (
-    <StyledLogo classNam={className}>
+    <StyledLogo className={className}>
       <img src={logo} alt="logo"></img>
       <div>
         <div className="logo-text">MyNFT</div>
