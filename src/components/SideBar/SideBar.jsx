@@ -1,36 +1,18 @@
 import styled from "styled-components";
-import logo from "assets/logo.svg";
-import marketIcon from "assets/market-icon.svg";
+import { ReactComponent as MarketIcon } from "assets/market-icon.svg";
 import {NavLink} from "react-router-dom";
+import {Logo} from "components/Logo";
 const StyledSideBar = styled.div`
   background-color: white ;
   height: 100vh;
   padding: 32px;
   .logo {
-    display: flex;
-    align-items: center;
-    gap: 16px;
     margin-bottom: 54px;
   }
-  .logo-text {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 36px;
-    color: #27262E;
-  }
-  .logo-desc {
-    font-size: 10px;
-    line-height: 13px;
-    color: #7A797D;
-
-  }
-  .sidebar-menu {
-    margin-bottom: 24px;
-    font-weight: 700;
-    font-size: 12px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: #27262E;
+  svg {
+    path {
+      stroke: #f30ee4;
+    }
   }
 `;
 const StyledNavItem = styled.div`
@@ -51,7 +33,7 @@ const StyledNavItem = styled.div`
 const NavItem = ({text, path}) => {
   return (
     <StyledNavItem>
-      <img src={marketIcon} alt="nav-icon"></img>
+      <MarketIcon />
       <NavLink to={path}>{text}</NavLink>
     </StyledNavItem>
   )
@@ -59,13 +41,7 @@ const NavItem = ({text, path}) => {
 export const SideBar = () => {
   return (
     <StyledSideBar>
-        <div className="logo">
-          <img src={logo} alt="logo"></img>
-          <div>
-            <div className="logo-text">MyNFT</div>
-            <div className="logo-desc">NFT Marketplace</div>
-          </div>
-        </div>
+        <Logo className="logo"></Logo>
         <div className="nav">
           <NavItem text="Home" path="/"></NavItem>
           <NavItem text="About" path="/about"></NavItem>
