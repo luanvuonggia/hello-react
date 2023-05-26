@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReactComponent as MarketIcon } from "assets/market-icon.svg";
+import { ReactComponent as HomeIcon } from "assets/home-icon.svg";
 import { NavLink } from "react-router-dom";
 import { Logo } from "components/Logo";
 const StyledLogo = styled(Logo)`
@@ -45,7 +46,7 @@ export const SideBar = () => {
       <div className="nav">
         <div></div>
         <NavLink to="/">
-          <MarketIcon />
+          <HomeIcon />
           <span className="item-text">Home</span>
         </NavLink>
         <NavLink to="/about">
