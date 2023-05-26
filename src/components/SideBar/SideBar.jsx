@@ -13,19 +13,16 @@ const StyledSideBar = styled.div`
     margin-bottom: 24px;
     font-weight: bold;
   }
-`;
-const StyledNavItem = styled.div`
-  gap: 16px;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 21px;
-  color: #7a797d;
-  margin-bottom: 25px;
   a {
     display: flex;
     align-items: center;
     text-decoration: unset;
     color: #7a797d;
+    gap: 16px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 24px;
   }
   .active {
     svg {
@@ -39,31 +36,31 @@ const StyledNavItem = styled.div`
     margin-left: 12px;
   }
 `;
-const NavItem = ({ text, path }) => {
-  return (
-    <StyledNavItem>
-      <NavLink to={path}>
-        <MarketIcon />
-        <span className="item-text">{text}</span>
-      </NavLink>
-    </StyledNavItem>
-  );
-};
+
+
 export const SideBar = () => {
   return (
     <StyledSideBar>
       <StyledLogo></StyledLogo>
       <div className="nav">
-        <NavItem text="Home" path="/"></NavItem>
-        <NavItem text="About" path="/about"></NavItem>
-        <NavItem text="Login" path="/login"></NavItem>
+        <div></div>
+        <NavLink to="/">
+          <MarketIcon />
+          <span className="item-text">Home</span>
+        </NavLink>
+        <NavLink to="/about">
+          <MarketIcon />
+          <span className="item-text">About</span>
+        </NavLink>
+        <NavLink to="/login">
+          <MarketIcon />
+          <span className="item-text">Login</span>
+        </NavLink>
+        
         <div className="sidebar-menu">PROFILE</div>
-        <NavItem text="Home" path="/sdsad"></NavItem>
-        <NavItem text="About" path="/abasdsadout"></NavItem>
-        <NavItem text="Login" path="/lodsasdgin"></NavItem>
-        <NavItem text="Home" path="/asdsad"></NavItem>
+        
         <div className="sidebar-menu">Other</div>
-        <NavItem text="Light Mode" path="asmdklasm"></NavItem>
+      
       </div>
     </StyledSideBar>
   );
