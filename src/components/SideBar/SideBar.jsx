@@ -3,6 +3,7 @@ import { ReactComponent as MarketIcon } from "assets/market-icon.svg";
 import { ReactComponent as HomeIcon } from "assets/home-icon.svg";
 import { NavLink } from "react-router-dom";
 import { Logo } from "components/Logo";
+import { Switch } from 'antd';
 const StyledLogo = styled(Logo)`
   margin:20px 0 20px;
 `
@@ -38,7 +39,9 @@ const StyledSideBar = styled.div`
   }
 `;
 
-
+const onChange = (checked) => {
+  console.log(`switch to ${checked}`);
+};
 export const SideBar = () => {
   return (
     <StyledSideBar>
@@ -49,9 +52,9 @@ export const SideBar = () => {
           <HomeIcon />
           <span className="item-text">Home</span>
         </NavLink>
-        <NavLink to="/about">
+        <NavLink to="/users">
           <MarketIcon />
-          <span className="item-text">About</span>
+          <span className="item-text">Users</span>
         </NavLink>
         <NavLink to="/login">
           <MarketIcon />
@@ -61,6 +64,7 @@ export const SideBar = () => {
         <div className="sidebar-menu">PROFILE</div>
         
         <div className="sidebar-menu">Other</div>
+        <Switch defaultChecked onChange={onChange} />
       
       </div>
     </StyledSideBar>

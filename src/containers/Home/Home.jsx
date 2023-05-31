@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Card from "components/Card";
-import { PrimaryLayout } from "components/Layout";
-import {Button} from "components/Button";
+import { PrimaryLayout, AntLayout } from "components/Layout";
+import { Button } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -10,6 +11,10 @@ import { Carousel } from "react-responsive-carousel";
 import slide1 from "assets/slide1.jpeg";
 import slide2 from "assets/slide2.jpeg";
 import slide3 from "assets/slide3.jpeg";
+
+const CustomButton = styled(Button)`
+  background-color: #6ced99;
+`
 
 const AppWrapper = styled.div`
   text-align: center;
@@ -49,6 +54,10 @@ const AppWrapper = styled.div`
       color: #FFFFFF;
     }
   }
+  .user-info {
+    color: white;
+    font-size: 28px;
+  }
 `;
 const fakeData = [
   {
@@ -73,8 +82,10 @@ const fakeData = [
   },
 ];
 const Home = () => {
+  const loggedinUser = useSelector((state) => state.auth);
+  const usersStore =  useSelector((state) => state.users);
+  console.log(usersStore.listUser);
   return (
-    <PrimaryLayout>
       <AppWrapper>
         <header className="App-header">
           <Carousel width={716} showThumbs={true}>
@@ -83,7 +94,9 @@ const Home = () => {
               <div className="text-center">
                 <p className="large-text">Discover, Create and Sell Your Own NFT.</p>
                 <Button>Discover</Button>
-                <Button>Create</Button>
+                <div className="user-info">{loggedinUser.username}</div>
+                <div className="user-info">{loggedinUser.password}</div>
+                <CustomButton>Create</CustomButton>
               </div> 
             </div>
             <div className="slide">
@@ -104,7 +117,6 @@ const Home = () => {
           </div>
         </header>
       </AppWrapper>
-    </PrimaryLayout>
   );
 };
 export default Home;

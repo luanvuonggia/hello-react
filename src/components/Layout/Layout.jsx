@@ -1,6 +1,7 @@
 import Header from "components/Header";
 import styled from "styled-components";
-import {SideBar} from "components/SideBar"
+import {SideBar} from "components/SideBar";
+import {Helmet} from "react-helmet";
 
 const LayoutStyled = styled.div`
   background-color: #CAEAE6;
@@ -19,9 +20,13 @@ const SideBarStyled = styled.div`
   width: 20%;
 `;
 
-const PrimaryLayout = ({ children }) => {
+const PrimaryLayout = ({ title, children }) => {
   return (
     <LayoutStyled>
+      <Helmet>
+      <title>{title}</title>
+      <meta name="description" content="" />
+    </Helmet>
       <SideBarStyled>
         <SideBar></SideBar>
       </SideBarStyled>
