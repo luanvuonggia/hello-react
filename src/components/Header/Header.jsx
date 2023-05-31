@@ -2,6 +2,7 @@ import styled from "styled-components";
 import avatar from "assets/avatar.svg";
 import searchIcon from "assets/search-icon.svg";
 import noti from "assets/noti.svg"
+import {useSelector} from "react-redux";
 
 const HeaderStyled = styled.div`
   padding: 32px;
@@ -45,6 +46,7 @@ const HeaderStyled = styled.div`
   }
 `;
 const Header = () => {
+  const loggedinUser = useSelector((state) => state.auth);
   return (
     <HeaderStyled>
       <span className="search-wrapper">
@@ -57,6 +59,7 @@ const Header = () => {
       </span>
       <div className="user-info">
         <div className="noti-icon"><img src={noti} alt="noti"></img></div>
+        <span>{loggedinUser.username}</span>
         <img src={avatar} alt="avatar" />
       </div>
     </HeaderStyled>

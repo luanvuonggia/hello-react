@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 import Card from "components/Card";
 import { PrimaryLayout, AntLayout } from "components/Layout";
-import { Button } from 'antd';
+import { Button, Input } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
@@ -82,9 +82,11 @@ const fakeData = [
   },
 ];
 const Home = () => {
-  const loggedinUser = useSelector((state) => state.auth);
-  const usersStore =  useSelector((state) => state.users);
-  console.log(usersStore.listUser);
+  const dispatch = useDispatch();
+  const [newName, setNewname] = useState("");
+  const rename = () => {
+    dispatch.auth.setUsername(newName);
+  }
   return (
       <AppWrapper>
         <header className="App-header">
@@ -102,6 +104,7 @@ const Home = () => {
               <img src={slide3} alt="" />
             </div>
           </Carousel>
+          <Input style={{width: 300, marginTop: '40px'}} onChange={(e) => setNewname(e.target.value)}></Input> <Button onClick={rename}>Rename</Button>
           {/* <div className="card-wrapper">
             {fakeData.map((item) => (
               <Card

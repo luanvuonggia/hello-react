@@ -57,7 +57,6 @@ const columns = [
 ];
 
 const Users = () => {
-  const loggedinUser = useSelector((state) => state.auth);
   const usersStore = useSelector((state) => state.users);
   const dispatch = useDispatch();
 
