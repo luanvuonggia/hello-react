@@ -88,15 +88,11 @@ const Home = () => {
   return (
       <AppWrapper>
         <header className="App-header">
-          <Carousel width={716} showThumbs={true}>
+          <Carousel width={716} showThumbs={false}>
             <div className="slide">
               <img src={slide1} alt=""/>
               <div className="text-center">
                 <p className="large-text">Discover, Create and Sell Your Own NFT.</p>
-                <Button>Discover</Button>
-                <div className="user-info">{loggedinUser.username}</div>
-                <div className="user-info">{loggedinUser.password}</div>
-                <CustomButton>Create</CustomButton>
               </div> 
             </div>
             <div className="slide">
@@ -106,7 +102,7 @@ const Home = () => {
               <img src={slide3} alt="" />
             </div>
           </Carousel>
-          <div className="card-wrapper">
+          {/* <div className="card-wrapper">
             {fakeData.map((item) => (
               <Card
                 title={item.title}
@@ -114,7 +110,7 @@ const Home = () => {
                 percent={item.percent}
               ></Card>
             ))}
-          </div>
+          </div> */}
         </header>
       </AppWrapper>
   );

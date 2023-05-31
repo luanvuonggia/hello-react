@@ -35,9 +35,9 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: "Age",
-    dataIndex: "age",
-    key: "age",
+    title: "Username",
+    dataIndex: "username",
+    key: "username",
   },
   {
     title: "Address",
@@ -45,43 +45,28 @@ const columns = [
     key: "address",
   },
   {
-    title: "Tags",
-    key: "tags",
-    dataIndex: "tags",
-    render: (_, { tags }) => (
-      <>
-        {tags.map((tag) => {
-          let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "loser") {
-            color = "volcano";
-          }
-          return (
-            <Tag color={color} key={tag}>
-              {tag.toUpperCase()}
-            </Tag>
-          );
-        })}
-      </>
-    ),
+    title: "Email;",
+    key: "email",
+    dataIndex: "email",
   },
   {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
+    title: "Phone",
+    key: "phone",
+    dataIndex: "phone",
   },
 ];
 
-const About = () => {
-  const [form] = Form.useForm();
-
+const Users = () => {
   const loggedinUser = useSelector((state) => state.auth);
   const usersStore = useSelector((state) => state.users);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch.users.fetchUsers();
+  }, [])
+  const [form] = Form.useForm();
+
+  
   //const [dataTable, setDataTable] = useState(usersStore.listUser);
   const [open, setOpen] = useState(false);
   const showModal = () => {
@@ -96,21 +81,13 @@ const About = () => {
     setOpen(false);
   };
   const onFinish = (user) => {
-    // Cach 1
-    // const newData = dataTable.concat([{
-    //   key: Math.floor(Math.random() * 10000) + 1,
-    //   name: user.name,
-    //   age: user.age,
-    //   address: "afdasfgmdas;kfgmdal;kfm",
-    //   tags: ["cool", "teacher"],
-    // }]);
     // // Cach 2
     const newData = [...usersStore.listUser, {
       key: Math.floor(Math.random() * 10000) + 1,
       name: user.name,
-      age: user.age,
+      username:  user.name,
       address: "afdasfgmdas;kfgmdal;kfm",
-      tags: ["cool", "teacher"],
+
     }]
     dispatch.users.setListUser(newData);
   }
@@ -119,7 +96,6 @@ const About = () => {
       <div className="About">
         <div className="about-section">
           <h1>Users management</h1>
-          <h1>{loggedinUser.username}</h1>
           <Button type="primary" onClick={showModal}>
             Add users
           </Button>
@@ -174,4 +150,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Users;
