@@ -1,7 +1,7 @@
 import { FileOutlined, PieChartOutlined, UserOutlined, DesktopOutlined, TeamOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 const { Header, Content, Footer, Sider } = Layout;
 function getItem(label, key, icon, children) {
   return {
@@ -16,7 +16,7 @@ const items = [
   getItem(<Link to="users">Users</Link>, '2', <DesktopOutlined />),
   
 ];
-const AntLayout = ({children}) => {
+const AntLayout = () => {
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer },
@@ -58,7 +58,7 @@ const AntLayout = ({children}) => {
               background: colorBgContainer,
             }}
           >
-            {children}
+            <Outlet />
           </div>
         </Content>
         <Footer

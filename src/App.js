@@ -1,18 +1,21 @@
 import React, { useState } from "react";
 import Home from "containers/Home";
-import About from "containers/Users";
+import Users from "containers/Users";
 import Login from "containers/Login";
 import NotFoundPage from "containers/404Page";
 import { AntLayout, PrimaryLayout } from "components/Layout";
-import { useRoutes } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 function App() {
-  let element = useRoutes([
-    { path: "login", element: <Login /> },
-    { path: "", element: <PrimaryLayout><Home /></PrimaryLayout> },
-    { path: "users", element: <PrimaryLayout><About /></PrimaryLayout> },
-    { path: "*", element: <NotFoundPage /> },
-  ]);
-
-  return element;
+  
+  return (
+    <Routes>
+      <Route exact element={<AntLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/users" element={<Users />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  );
 }
 export default App;
