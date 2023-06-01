@@ -2,6 +2,7 @@ import Header from "components/Header";
 import styled from "styled-components";
 import {SideBar} from "components/SideBar";
 import {Helmet} from "react-helmet";
+import { Outlet } from 'react-router-dom';
 
 const LayoutStyled = styled.div`
   background-color: #CAEAE6;
@@ -20,7 +21,7 @@ const SideBarStyled = styled.div`
   width: 20%;
 `;
 
-const PrimaryLayout = ({ title, children }) => {
+const PrimaryLayout = ({ title }) => {
   return (
     <LayoutStyled>
       <Helmet>
@@ -32,7 +33,7 @@ const PrimaryLayout = ({ title, children }) => {
       </SideBarStyled>
       <div className="right">
         <Header />
-        <ContentStyled>{children}</ContentStyled>
+        <ContentStyled><Outlet></Outlet></ContentStyled>
       </div>
     </LayoutStyled>
   );

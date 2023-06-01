@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { PrimaryLayout, AntLayout } from "components/Layout";
-import { Space, Table, Tag, Button, Modal, Form, Input } from "antd";
-import { useDispatch, useSelector } from 'react-redux'
+import Excel from "components/Excel";
+import { Space, Table, Button, Modal, Form, Input } from "antd";
+import { useDispatch, useSelector } from "react-redux";
 const SubmitButton = ({ form }) => {
   const [submittable, setSubmittable] = React.useState(false);
 
@@ -59,14 +59,11 @@ const columns = [
 const Users = () => {
   const usersStore = useSelector((state) => state.users);
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch.users.fetchUsers();
-  }, [])
+  }, [dispatch.users]);
   const [form] = Form.useForm();
 
-  
-  //const [dataTable, setDataTable] = useState(usersStore.listUser);
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
@@ -81,71 +78,115 @@ const Users = () => {
   };
   const onFinish = (user) => {
     // // Cach 2
-    const newData = [...usersStore.listUser, {
-      key: Math.floor(Math.random() * 10000) + 1,
-      name: user.name,
-      username:  user.name,
-      address: "afdasfgmdas;kfgmdal;kfm",
-
-    }]
+    const newData = [
+      ...usersStore.listUser,
+      {
+        key: Math.floor(Math.random() * 10000) + 1,
+        name: user.name,
+        username: user.name,
+        address: "afdasfgmdas;kfgmdal;kfm",
+      },
+    ];
     dispatch.users.setListUser(newData);
-  }
+  };
   return (
-
-      <div className="About">
-        <div className="about-section">
-          <h1>Users management</h1>
-          <Button type="primary" onClick={showModal}>
-            Add users
-          </Button>
-          <Modal
-            open={open}
-            title="Title"
-            onOk={handleOk}
-            onCancel={handleCancel}
-            footer={null}
+    <div className="About">
+      <div className="about-section">
+        <h1>Users management</h1>
+        <Button type="primary" onClick={showModal}>
+          Add users
+        </Button>
+        <Excel
+          fileName="export-user"
+          data={[
+            {
+              columns: [
+                {
+                  title: "User Id",
+                  dataIndex: "id",
+                  width: 5,
+                },
+                {
+                  title: "Name",
+                  dataIndex: "username",
+                  width: 20,
+                },
+                {
+                  title: "Email",
+                  dataIndex: "email",
+                  width: 50,
+                },
+              ],
+              data: usersStore.listUser,
+              tabName: "info",
+            },
+            {
+              columns: [
+                {
+                  title: "Name",
+                  dataIndex: "username",
+                  width: 30,
+                },
+                {
+                  title: "Phone",
+                  dataIndex: "phone",
+                  width: 30,
+                },
+              ],
+              data: usersStore.listUser,
+              tabName: "contact",
+            },
+          ]}
+        >
+          <Button>Export users</Button>
+        </Excel>
+        <Modal
+          open={open}
+          title="Title"
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={null}
+        >
+          <Form
+            form={form}
+            name="validateOnly"
+            layout="vertical"
+            autoComplete="off"
+            onFinish={onFinish}
           >
-            <Form
-              form={form}
-              name="validateOnly"
-              layout="vertical"
-              autoComplete="off"
-              onFinish={onFinish}
+            <Form.Item
+              name="name"
+              label="Name"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
             >
-              <Form.Item
-                name="name"
-                label="Name"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name="age"
-                label="Age"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item>
-                <Space>
-                  <SubmitButton form={form} />
-                  <Button htmlType="reset">Reset</Button>
-                </Space>
-              </Form.Item>
-            </Form>
-          </Modal>
-          <Table columns={columns} dataSource={usersStore.listUser} />
-        </div>
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="age"
+              label="Age"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Space>
+                <SubmitButton form={form} />
+                <Button htmlType="reset">Reset</Button>
+              </Space>
+            </Form.Item>
+          </Form>
+        </Modal>
+        <Table columns={columns} dataSource={usersStore.listUser} />
       </div>
-
+    </div>
   );
 };
 
