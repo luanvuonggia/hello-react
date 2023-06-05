@@ -16,7 +16,7 @@ const StyledButton = styled.button`
     margin-right: 8px;
   }
 `;
-export const Button = ({ width, height, textColor, bgColor, boderColor, percent, fontSize, borderRadius, children, ...rest }) => {
+export const Button = ({ label, width, height, textColor, bgColor, boderColor, percent, fontSize, borderRadius, children, ...rest }) => {
   return <StyledButton 
     percent={percent}
     width={width}
@@ -29,7 +29,7 @@ export const Button = ({ width, height, textColor, bgColor, boderColor, percent,
     {...rest}
     >
       { percent && <img src={ percent< 0 ? redArrow : greenArrow} alt="arr"></img> }
-      {children}
+      {label ? label : children}
     </StyledButton>;
  }
  Button.defaultProps = {

@@ -11,6 +11,7 @@ import { Carousel } from "react-responsive-carousel";
 import slide1 from "assets/slide1.jpeg";
 import slide2 from "assets/slide2.jpeg";
 import slide3 from "assets/slide3.jpeg";
+import {useStore} from "state";
 
 const CustomButton = styled(Button)`
   background-color: #6ced99;
@@ -87,33 +88,14 @@ const Home = () => {
   const rename = () => {
     dispatch.auth.setUsername(newName);
   }
+  const bears = useStore((state) => state.bears);
+  const increasePopulation = useStore((state) => state.increasePopulation);
   return (
       <AppWrapper>
         <header className="App-header">
-          <Carousel width={716} showThumbs={false}>
-            <div className="slide">
-              <img src={slide1} alt=""/>
-              <div className="text-center">
-                <p className="large-text">Discover, Create and Sell Your Own NFT.</p>
-              </div> 
-            </div>
-            <div className="slide">
-              <img src={slide2} alt="" />
-            </div>
-            <div className="slide">
-              <img src={slide3} alt="" />
-            </div>
-          </Carousel>
+        <h1>{bears} around here...</h1>
+        <Button onClick={increasePopulation}>Increase</Button>
           <Input style={{width: 300, marginTop: '40px'}} onChange={(e) => setNewname(e.target.value)}></Input> <Button onClick={rename}>Rename</Button>
-          {/* <div className="card-wrapper">
-            {fakeData.map((item) => (
-              <Card
-                title={item.title}
-                amount={item.amount}
-                percent={item.percent}
-              ></Card>
-            ))}
-          </div> */}
         </header>
       </AppWrapper>
   );
